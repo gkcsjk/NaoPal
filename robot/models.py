@@ -20,10 +20,12 @@ class Walk(models.Model):
     horizontal = models.FloatField(default=0)
     angle = models.FloatField(default=0)
 
+
 class Customize(models.Model):
     motion = models.OneToOneField(Motion, on_delete=models.CASCADE, primary_key=True)
     file_path = models.FileField(upload_to='uploads/')
     loops = models.IntegerField(default=500)
+
 
 class Speak(models.Model):
     motion = models.OneToOneField(Motion, on_delete=models.CASCADE, primary_key=True)
