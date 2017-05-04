@@ -5,13 +5,16 @@ from django.db import models
 
 # Create your models here.
 
+
 class MotionList(models.Model):
+    list_name = models.CharField(max_length=50, primary_key=True)
     len = models.IntegerField(default=0)
 
 
 class Motion(models.Model):
+    motion_type = models.CharField(default='default motion', max_length=50)
     list_id = models.ForeignKey(MotionList, on_delete=models.CASCADE)
-    order = models.IntegerField(default=0)
+    order = models.IntegerField(default=1000)
 
 
 class Walk(models.Model):
@@ -23,7 +26,7 @@ class Walk(models.Model):
 
 class Customize(models.Model):
     motion = models.OneToOneField(Motion, on_delete=models.CASCADE, primary_key=True)
-    file_path = models.FileField(upload_to='uploads/')
+    file_path = models.FilePathField()
     loops = models.IntegerField(default=500)
 
 
