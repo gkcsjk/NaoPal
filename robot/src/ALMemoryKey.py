@@ -49,14 +49,14 @@ LEG_TORQUE_KEY = {
 
 
 ALMEMORY_TORQUE_THRESHOLD = {
-    "RShoulderRoll": 0.4,
-    "LShoulderRoll": 0.4,
-    "RShoulderPitch": 0.35,
-    "LShoulderPitch": 0.35,
-    "RElbowRoll": 0.2,
-    "LElbowRoll": 0.2,
-    "RElbowYaw": 0.2,
-    "LElbowYaw": 0.2,
+    "RShoulderRoll": 0.5,
+    "LShoulderRoll": 0.5,
+    "RShoulderPitch": 0.5,
+    "LShoulderPitch": 0.5,
+    "RElbowRoll": 0.5,
+    "LElbowRoll": 0.5,
+    "RElbowYaw": 0.5,
+    "LElbowYaw": 0.5,
     "HeadYaw": 0,
     "HeadPitch": 0,
     "RWristYaw": 0,

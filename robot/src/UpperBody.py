@@ -3,10 +3,41 @@ import ALMemoryKey
 import FilesRW as Frw
 
 
+def record_animation_buttons(motion, memory, path, filename):
+    print "operate the robot..."
+    csv_path = Frw.create_csv(path, filename)
+    animation_list = []
+    finished = False
+    while 1:
+        if finished:
+            break
+        for joint in ALMemoryKey.UPPERBODY_TORQUE_KEY.keys():
+            # check the torque and set relevant parts' stiffnesses to 0
+            value = memory.getData(ALMemoryKey.UPPERBODY_TORQUE_KEY[joint])
+            if value > ALMemoryKey.ALMEMORY_TORQUE_THRESHOLD[joint]:
+                motion.setStiffnesses(joint, 0)
+
+        flag = {}
+        for key in ALMemoryKey.HEAD_TACTIL_TOUCHED.keys():
+            value = memory.getData(ALMemoryKey.HEAD_TACTIL_TOUCHED[key])
+            print key, value
+            flag[key] = value
+        if flag["RearTactil"] == 1.0:
+            motion.setStiffnesses('Body', 1)
+            finished = True
+        elif flag["MiddleTactil"] == 1.0:
+            save_data(memory, animation_list)
+        elif flag["FrontTactil"] == 1.0:
+            motion.setStiffnesses('Body', 1)
+    print "Finish recording..."
+    print "saving data..."
+    Frw.save_result(animation_list, csv_path)
+    return csv_path
+
+
 def record_animation1(motion, memory, path, loop, filename):
     print "operate the robot..."
     l = 0
-    isRecording = True
     csv_path = Frw.create_csv(path, filename)
     animation_list = []
     start = time.time()
@@ -14,19 +45,15 @@ def record_animation1(motion, memory, path, loop, filename):
     motion.setStiffnesses('LArm', 0)
     motion.setStiffnesses('RArm', 0)
     while l < loop:
-        if not isRecording:
-            break
         l += 1
         print "loop:"
         print l
         save_data(memory, animation_list)
         time.sleep(0.15)
     end = time.time()
-    print "recoding time: {} seconds.".format(end - start)
+    print "recording time: {} seconds.".format(end - start)
     Frw.save_result(animation_list, csv_path)
     return csv_path
-
-
 
 
 def record_animation(motion, memory, path, loop, filename):
@@ -83,7 +110,7 @@ def load_animation(motion, path):
         times = []
         single_time = []
         for i in range(1, length+1):
-            t = round(0.2*i, 2)
+            t = round(0.5*i, 2)
             single_time.append(t)
         isAbsolute = True
         for name in names:

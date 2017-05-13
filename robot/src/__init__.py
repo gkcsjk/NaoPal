@@ -48,7 +48,7 @@ def walk(x, y, angle):
 def record(filename):
     motion.setStiffnesses("Body", 1)
     posture.goToPosture("StandInit", 0.5)
-    csv_path = UpperBody.record_animation1(motion, memory, PATH, LOOP, filename)
+    csv_path = UpperBody.record_animation_buttons(motion, memory, PATH, filename)
     motion.rest()
     return csv_path
 
