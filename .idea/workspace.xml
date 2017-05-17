@@ -1,27 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cf37734f-e0c7-4d3c-89cc-3e9f92e84222" name="Default" comment="recording motions update: UpperBody.py">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/robot/static/images/nao1.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/robot/static/images/nao2.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/robot/static/images/nao3.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/robot/migrations/0001_initial.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/robot/migrations/0002_auto_20170421_1517.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/robot/migrations/0003_motion_motion_type.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/robot/migrations/0004_auto_20170423_1548.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/robot/migrations/0005_auto_20170423_2105.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/robot/migrations/0006_auto_20170517_2142.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/robot/src/DetectBeat.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/robot/src/beats/sugar.csv" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/templates/timeline.html" afterPath="$PROJECT_DIR$/templates/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
+    <list default="true" id="cf37734f-e0c7-4d3c-89cc-3e9f92e84222" name="Default" comment="Music dancing function">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robot/models.py" afterPath="$PROJECT_DIR$/robot/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robot/src/UpperBody.py" afterPath="$PROJECT_DIR$/robot/src/UpperBody.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robot/src/Util.py" afterPath="$PROJECT_DIR$/robot/src/Util.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robot/src/__init__.py" afterPath="$PROJECT_DIR$/robot/src/__init__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robot/urls.py" afterPath="$PROJECT_DIR$/robot/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robot/views.py" afterPath="$PROJECT_DIR$/robot/views.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -39,7 +20,7 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/robot/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="134">
+            <state relative-caret-position="5190">
               <caret line="173" column="35" lean-forward="true" selection-start-line="173" selection-start-column="35" selection-end-line="173" selection-end-column="35" />
               <folding>
                 <element signature="e#24#63#0" expanded="true" />
@@ -214,6 +195,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="robot_frontend" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="robot_frontend" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="robot_frontend" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="robot" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -501,6 +496,7 @@
     <frame x="-12" y="-12" width="3224" height="1754" extended-state="6" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32917213" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298292" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298292" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -942,7 +938,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/robot/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="134">
+        <state relative-caret-position="5190">
           <caret line="173" column="35" lean-forward="true" selection-start-line="173" selection-start-column="35" selection-end-line="173" selection-end-column="35" />
           <folding>
             <element signature="e#24#63#0" expanded="true" />
