@@ -27,7 +27,7 @@ class Walk(models.Model):
 class Customize(models.Model):
     motion = models.OneToOneField(Motion, on_delete=models.CASCADE, primary_key=True)
     file_path = models.FilePathField()
-    loops = models.IntegerField(default=500)
+    music = models.IntegerField(default=0)
 
 
 class Speak(models.Model):

@@ -12,11 +12,7 @@ posture = ALProxy("ALRobotPosture", IP, PORT)
 memory = ALProxy("ALMemory", IP, PORT)
 battery = ALProxy("ALBattery", IP, PORT)
 tts = ALProxy("ALTextToSpeech", IP, PORT)
-
-
-
-def print_something(x):
-    print x
+aup = ALProxy("ALAudioPlayer", IP, PORT)
 
 
 def rest():
@@ -45,10 +41,15 @@ def walk(x, y, angle):
     motion.waitUntilMoveIsFinished()
 
 
-def record(filename):
+def record(filename, type):
     motion.setStiffnesses("Body", 1)
     posture.goToPosture("StandInit", 0.5)
-    csv_path = UpperBody.record_animation_buttons(motion, memory, PATH, filename)
+    if type == 'torque':
+        csv_path = UpperBody.record_animation(motion, memory, PATH, LOOP, filename)
+    elif type == 'free':
+        csv_path = UpperBody.record_animation1(motion, memory, PATH, LOOP, filename)
+    else:
+        csv_path = UpperBody.record_animation_buttons(motion, memory, PATH, filename)
     motion.rest()
     return csv_path
 
@@ -58,6 +59,15 @@ def replay(csv_path):
     posture.goToPosture("StandInit", 0.5)
     if csv_path != "":
         UpperBody.load_animation(motion, csv_path)
+
+
+def replay_music(csv_path, beats):
+    motion.setStiffnesses("Body", 1)
+    posture.goToPosture("StandInit", 0.5)
+    if csv_path != "":
+        beats_list = Util.beats[beats]
+        aup.post.playFile(Util.music[beats])
+        UpperBody.load_animation_with_beats(motion, beats_list, csv_path)
 
 
 def get_battery():

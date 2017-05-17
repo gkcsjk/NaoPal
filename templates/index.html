@@ -1,356 +1,392 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 {%  load staticfiles %}
 <html>
-	<head>
-		<title>Nao Pal</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="{% static 'assets/css/main.css' %}" />
-		<!--[if lte IE 9]><link rel="stylesheet" href="{% static 'assets/css/ie9.css' %}" /><![endif]-->
-		<noscript><link rel="stylesheet" href="{%static 'assets/css/noscript.css'%}" /></noscript>
-	</head>
-	<body>
+<head>
+    <title>Nao Pal</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'w3.css' %}" />
+    <style>
+        body {font-family: "Lato", sans-serif}
+        .mySlides {display: none}
 
-		<!-- Wrapper -->
-			<div id="wrapper">
-                <h1>NAO PAL</h1>
+        ul li a {display:block;}
 
-				<!-- Header -->
-					<header id="header">
-						<div class="logo">
-							<span class="icon fa-diamond"></span>
-						</div>
-						<div class="content">
-							<div class="inner">
-                                <h1><a href="timeline">Timeline Shows here</a></h1>
-								<p><!--[-->Create you own robot pal<!--]--><br />
-								<!--[-->Add motions to your timeline<!--]--></p>
-							</div>
-						</div>
-						<nav>
-							<ul>
-								<li><a href="#info">Information</a></li>
-								<li><a href="#walk">walk</a></li>
-								<li><a href="#customize">Customize</a></li>
-								<li><a href="#rest">Rest</a></li>
-								<li><a href="http://192.168.1.100">settings</a></li>
-								<!--<li><a href="#elements">elements</a></li>-->
-							</ul>
-						</nav>
-					</header>
+        .deleteButton {
 
-				<!-- Main -->
-					<div id="main">
+        }
 
-						<!-- Info -->
-							<article id="info">
-								<h2 class="major">Info</h2>
-								<span class="image main"><img src="{% static 'images/pic01.jpg' %}" alt="" /></span>
-								<p>Aenean ornare velit lacus, ac varius enim ullamcorper eu. Proin aliquam facilisis ante interdum congue. Integer mollis, nisl amet convallis, porttitor magna ullamcorper, amet egestas mauris. Ut magna finibus nisi nec lacinia. Nam maximus erat id euismod egestas. By the way, check out my <a href="#work">awesome work</a>.</p>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dapibus rutrum facilisis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam tristique libero eu nibh porttitor fermentum. Nullam venenatis erat id vehicula viverra. Nunc ultrices eros ut ultricies condimentum. Mauris risus lacus, blandit sit amet venenatis non, bibendum vitae dolor. Nunc lorem mauris, fringilla in aliquam at, euismod in lectus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In non lorem sit amet elit placerat maximus. Pellentesque aliquam maximus risus, vel sed vehicula.</p>
-							</article>
+        body.dragging, body.dragging * {
+          cursor: move !important;
+        }
 
-						<!-- rest -->
-							<article id="rest">
-								<h2 class="major">Rest</h2>
-								<span class="image main"><img src="{% static 'images/pic02.jpg' %}" alt="" /></span>
-								<form action="#" method="get">
-									<label for="rest">Are you sure to rest?</label>
-									<input type="submit" value="Confirm" name="rest">
-								</form>
-							</article>
+        .dragged {
+          position: absolute;
+          opacity: 0.5;
+          z-index: 2000;
+        }
 
-						<!-- customize -->
-							<article id="customize">
-								<h2 class="major">Record and Replay</h2>
-								<span class="image main"><img src="{% static 'images/pic03.jpg' %}" alt="" /></span>
-								<form method="get" action="#">
-									<div class="field half first">
-										<input type="submit" value="Record" name="record">
-									</div>
-									<div class="field half">
-										<input type="submit" value="Replay" name="replay">
-									</div>
-								</form>
-							</article>
+        ul.motion li.placeholder {
+          position: relative;
+          /** More li styles **/
+        }
+        ul.motion li.placeholder:before {
+          position: absolute;
+          /** Define arrowhead **/
+        }
 
-						<!-- walk -->
-							<article id="walk">
-								<h2 class="major">Walk Settings</h2>
-								<form method="get" action="#">
-									<div class="field half first">
-										<label for="x">Horizontal</label>
-										<input type="text" value="0" name="x" id="x" />
-									</div>
-									<div class="field half">
-										<label for="y">Vertical</label>
-										<input type="text" value="0" name="y" id="y" />
-									</div>
-									<div class="field">
-										<label for="message">rotation</label>
-										<input type="text" value="0" name="angle" id="angle"/>
-									</div>
-									<ul class="actions">
-										<li><input type="submit" value="Submit" class="special" name="walk_submit" /></li>
-										<li><input type="reset" value="Reset" /></li>
-									</ul>
-								</form>
-							</article>
 
-						<!-- Elements -->
-							<article id="elements">
-								<h2 class="major">Elements</h2>
 
-								<section>
-									<h3 class="major">Text</h3>
-									<p>This is <b>bold</b> and this is <strong>strong</strong>. This is <i>italic</i> and this is <em>emphasized</em>.
-									This is <sup>superscript</sup> text and this is <sub>subscript</sub> text.
-									This is <u>underlined</u> and this is code: <code>for (;;) { ... }</code>. Finally, <a href="#">this is a link</a>.</p>
-									<hr />
-									<h2>Heading Level 2</h2>
-									<h3>Heading Level 3</h3>
-									<h4>Heading Level 4</h4>
-									<h5>Heading Level 5</h5>
-									<h6>Heading Level 6</h6>
-									<hr />
-									<h4>Blockquote</h4>
-									<blockquote>Fringilla nisl. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan faucibus. Vestibulum ante ipsum primis in faucibus lorem ipsum dolor sit amet nullam adipiscing eu felis.</blockquote>
-									<h4>Preformatted</h4>
-									<pre><code>i = 0;
+    </style>
+</head>
+<body>
 
-while (!deck.isInOrder()) {
-    print 'Iteration ' + i;
-    deck.shuffle();
-    i++;
-}
+<!-- Navbar -->
+<div class="w3-top">
+    <div class="w3-bar w3-black w3-card-2">
+        <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+        <a href="#" class="w3-bar-item w3-button w3-padding-large">HOME</a>
+        <a href="#motion_list" class="w3-bar-item w3-button w3-padding-large w3-hide-small">MOTION LISTS</a>
+        <a href="#editMotionList" class="w3-bar-item w3-button w3-padding-large w3-hide-small">RUN</a>
+        <a href="#info" class="w3-bar-item w3-button w3-padding-large w3-hide-small">INFORMATION</a>
+        <div class="w3-dropdown-hover w3-hide-small">
+            <button class="w3-padding-large w3-button" title="More">MORE <i class="fa fa-caret-down"></i></button>
+            <div class="w3-dropdown-content w3-bar-block w3-card-4">
+                <a href="#" class="w3-bar-item w3-button">Merchandise</a>
+                <a href="#" class="w3-bar-item w3-button">Extras</a>
+                <a href="#" class="w3-bar-item w3-button">Media</a>
+            </div>
+        </div>
+        <a href="javascript:void(0)" class="w3-padding-large w3-hover-red w3-hide-small w3-right"><i class="fa fa-search"></i></a>
+    </div>
+</div>
 
-print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
-								</section>
+<!-- Navbar on small screens -->
+<div id="navDemo" class="w3-bar-block w3-black w3-hide w3-hide-large w3-hide-medium w3-top" style="margin-top:46px">
+    <a href="#motion_list" class="w3-bar-item w3-button w3-padding-large">BAND</a>
+    <a href="#editMotionList" class="w3-bar-item w3-button w3-padding-large">TOUR</a>
+    <a href="#info" class="w3-bar-item w3-button w3-padding-large">CONTACT</a>
+    <a href="#" class="w3-bar-item w3-button w3-padding-large">MERCH</a>
+</div>
 
-								<section>
-									<h3 class="major">Lists</h3>
+<!-- Page content -->
+<div class="w3-content" style="max-width:2000px;margin-top:46px">
 
-									<h4>Unordered</h4>
-									<ul>
-										<li>Dolor pulvinar etiam.</li>
-										<li>Sagittis adipiscing.</li>
-										<li>Felis enim feugiat.</li>
-									</ul>
+    <!-- Automatic Slideshow Images -->
+    <div class="mySlides w3-display-container w3-center">
+        <img src="{% static 'images/nao2.jpg' %}" style="width:100%">
+        <div class="w3-display-middle w3-container w3-text-white w3-padding-32 w3-hide-small">
+            <button class="w3-btn w3-xxxlarge"><a href="#motion_list" style="text-decoration:none">GET START</a></button>
+        </div>
+    </div>
+    <div class="mySlides w3-display-container w3-center">
+        <img src="{% static 'images/nao1.jpg' %}" style="width:100%">
+        <div class="w3-display-middle w3-container w3-text-white w3-padding-32 w3-hide-small">
+            <button class="w3-btn w3-xxxlarge"><a href="#motion_list" style="text-decoration:none">GET START</a></button>
+        </div>
+    </div>
+    <div class="mySlides w3-display-container w3-center">
+        <img src="{% static 'images/nao3.jpg' %}" style="width:100%">
+        <div class="w3-display-middle w3-container w3-text-white w3-padding-32 w3-hide-small">
+            <button class="w3-btn w3-xxxlarge"><a href="#motion_list" style="text-decoration:none">GET START</a></button>
+        </div>
+    </div>
 
-									<h4>Alternate</h4>
-									<ul class="alt">
-										<li>Dolor pulvinar etiam.</li>
-										<li>Sagittis adipiscing.</li>
-										<li>Felis enim feugiat.</li>
-									</ul>
+    <!-- The Create Motion List Section -->
+    <div class="w3-container w3-content w3-padding-64" style="max-width:800px" id="motion_list">
+        <h2 class="w3-wide w3-center">MOTION LISTS</h2>
+        <p class="w3-opacity w3-center"><i>Your motion lists show here</i></p>
+        <p class="w3-justify w3-center">Motion list stores your own list of motions which the robot can perform. Choose the existing motion list to
+            let the robot perform or create a new motion list. You can choose the pre-set motions yourself or customize your own motion. Enjoy yourself! </p>
+        <div class="w3-row w3-padding-32">
+            <div class="w3-row-padding-64 w3-section">
+                <button class="w3-button w3-black w3-margin-bottom" onclick="document.getElementById('motionListModal').style.display='block'">Create New</button>
+            </div>
+            <div class="w3-row-padding-64">
+                {% if ml %}
+                    <form class="w3-container" method="post" action="#editMotionList">{% csrf_token %}
+                    <h3>OR</h3>
+                    <label for="options">Select from existing lists:</label>
+                        <select class="w3-select" id="options" name="options">
+                            {% for list in ml %}
+                            <option value="{{ list.list_name }}"> {{ list.list_name }}</option>
+                            {% endfor %}
+                        </select>
+                        <div class="w3-row w3-section">
+                            <input type="submit" class="w3-button w3-block w3-black" name="motionListSubmit" value="CONFIRM" id="motionListSubmit">
+                        </div>
+                    </form>
+                {% else %}
+                    <p>No lists are available.</p>
+                {% endif %}
+            </div>
+        </div>
 
-									<h4>Ordered</h4>
-									<ol>
-										<li>Dolor pulvinar etiam.</li>
-										<li>Etiam vel felis viverra.</li>
-										<li>Felis enim feugiat.</li>
-										<li>Dolor pulvinar etiam.</li>
-										<li>Etiam vel felis lorem.</li>
-										<li>Felis enim et feugiat.</li>
-									</ol>
-									<h4>Icons</h4>
-									<ul class="icons">
-										<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-										<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-										<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
-										<li><a href="#" class="icon fa-github"><span class="label">Github</span></a></li>
-									</ul>
 
-									<h4>Actions</h4>
-									<ul class="actions">
-										<li><a href="#" class="button special">Default</a></li>
-										<li><a href="#" class="button">Default</a></li>
-									</ul>
-									<ul class="actions vertical">
-										<li><a href="#" class="button special">Default</a></li>
-										<li><a href="#" class="button">Default</a></li>
-									</ul>
-								</section>
+    </div>
 
-								<section>
-									<h3 class="major">Table</h3>
-									<h4>Default</h4>
-									<div class="table-wrapper">
-										<table>
-											<thead>
-												<tr>
-													<th>Name</th>
-													<th>Description</th>
-													<th>Price</th>
-												</tr>
-											</thead>
-											<tbody>
-												<tr>
-													<td>Item One</td>
-													<td>Ante turpis integer aliquet porttitor.</td>
-													<td>29.99</td>
-												</tr>
-												<tr>
-													<td>Item Two</td>
-													<td>Vis ac commodo adipiscing arcu aliquet.</td>
-													<td>19.99</td>
-												</tr>
-												<tr>
-													<td>Item Three</td>
-													<td> Morbi faucibus arcu accumsan lorem.</td>
-													<td>29.99</td>
-												</tr>
-												<tr>
-													<td>Item Four</td>
-													<td>Vitae integer tempus condimentum.</td>
-													<td>19.99</td>
-												</tr>
-												<tr>
-													<td>Item Five</td>
-													<td>Ante turpis integer aliquet porttitor.</td>
-													<td>29.99</td>
-												</tr>
-											</tbody>
-											<tfoot>
-												<tr>
-													<td colspan="2"></td>
-													<td>100.00</td>
-												</tr>
-											</tfoot>
-										</table>
-									</div>
+    <!-- Motion List Modal -->
+    <div id="motionListModal" class="w3-modal">
+        <div class="w3-modal-content w3-animate-top w3-card-4">
+            <header class="w3-container w3-teal w3-center w3-padding-32">
+                <span onclick="document.getElementById('motionListModal').style.display='none'"
+                    class="w3-button w3-teal w3-xlarge w3-display-topright">×</span>
+                <h2 class="w3-wide"><i class="fa fa-suitcase w3-margin-right"></i>New List</h2>
+            </header>
+            <div class="w3-container">
+                <form method="post" action="#motion_list"> {% csrf_token %}
+                    <p><label><i class="fa fa-user"></i> Name </label></p>
+                    <input class="w3-input w3-border" name="motionListName" id="motionListName" type="text" placeholder="Motion List Name">
+                    <input type="submit" value="CREATE" name="motionList" id="motionList" class="w3-button w3-block w3-teal w3-padding-16 w3-section w3-right">
+                    <button class="w3-button w3-red w3-section" onclick="document.getElementById('motionListModal').style.display='none'">Close <i class="fa fa-remove"></i></button>
+                </form>
+            </div>
+        </div>
+    </div>
 
-									<h4>Alternate</h4>
-									<div class="table-wrapper">
-										<table class="alt">
-											<thead>
-												<tr>
-													<th>Name</th>
-													<th>Description</th>
-													<th>Price</th>
-												</tr>
-											</thead>
-											<tbody>
-												<tr>
-													<td>Item One</td>
-													<td>Ante turpis integer aliquet porttitor.</td>
-													<td>29.99</td>
-												</tr>
-												<tr>
-													<td>Item Two</td>
-													<td>Vis ac commodo adipiscing arcu aliquet.</td>
-													<td>19.99</td>
-												</tr>
-												<tr>
-													<td>Item Three</td>
-													<td> Morbi faucibus arcu accumsan lorem.</td>
-													<td>29.99</td>
-												</tr>
-												<tr>
-													<td>Item Four</td>
-													<td>Vitae integer tempus condimentum.</td>
-													<td>19.99</td>
-												</tr>
-												<tr>
-													<td>Item Five</td>
-													<td>Ante turpis integer aliquet porttitor.</td>
-													<td>29.99</td>
-												</tr>
-											</tbody>
-											<tfoot>
-												<tr>
-													<td colspan="2"></td>
-													<td>100.00</td>
-												</tr>
-											</tfoot>
-										</table>
-									</div>
-								</section>
 
-								<section>
-									<h3 class="major">Buttons</h3>
-									<ul class="actions">
-										<li><a href="#" class="button special">Special</a></li>
-										<li><a href="#" class="button">Default</a></li>
-									</ul>
-									<ul class="actions">
-										<li><a href="#" class="button">Default</a></li>
-										<li><a href="#" class="button small">Small</a></li>
-									</ul>
-									<ul class="actions">
-										<li><a href="#" class="button special icon fa-download">Icon</a></li>
-										<li><a href="#" class="button icon fa-download">Icon</a></li>
-									</ul>
-									<ul class="actions">
-										<li><span class="button special disabled">Disabled</span></li>
-										<li><span class="button disabled">Disabled</span></li>
-									</ul>
-								</section>
 
-								<section>
-									<h3 class="major">Form</h3>
-									<form method="post" action="#">
-										<div class="field half first">
-											<label for="demo-name">Name</label>
-											<input type="text" name="demo-name" id="demo-name" value="" placeholder="Jane Doe" />
-										</div>
-										<div class="field half">
-											<label for="demo-email">Email</label>
-											<input type="email" name="demo-email" id="demo-email" value="" placeholder="jane@untitled.tld" />
-										</div>
-										<div class="field">
-											<label for="demo-category">Category</label>
-											<div class="select-wrapper">
-												<select name="demo-category" id="demo-category">
-													<option value="">-</option>
-													<option value="1">Manufacturing</option>
-													<option value="1">Shipping</option>
-													<option value="1">Administration</option>
-													<option value="1">Human Resources</option>
-												</select>
-											</div>
-										</div>
-										<div class="field half first">
-											<input type="radio" id="demo-priority-low" name="demo-priority" checked>
-											<label for="demo-priority-low">Low</label>
-										</div>
-										<div class="field half">
-											<input type="radio" id="demo-priority-high" name="demo-priority">
-											<label for="demo-priority-high">High</label>
-										</div>
-										<div class="field half first">
-											<input type="checkbox" id="demo-copy" name="demo-copy">
-											<label for="demo-copy">Email me a copy</label>
-										</div>
-										<div class="field half">
-											<input type="checkbox" id="demo-human" name="demo-human" checked>
-											<label for="demo-human">Not a robot</label>
-										</div>
-										<div class="field">
-											<label for="demo-message">Message</label>
-											<textarea name="demo-message" id="demo-message" placeholder="Enter your message" rows="6"></textarea>
-										</div>
-										<ul class="actions">
-											<li><input type="submit" value="Send Message" class="special" /></li>
-											<li><input type="reset" value="Reset" /></li>
-										</ul>
-									</form>
-								</section>
+    <!-- The Editing Motion List Section -->
+    <div class="w3-black" id="editMotionList">
+        <div class="w3-container w3-content w3-padding-64" style="max-width:800px">
+            <h2 class="w3-wide w3-center" id="editMotionList_h2">CURRENT MOTION LIST: {{ cur }}</h2>
+            <p id="test" class="w3-opacity w3-center"><i>It's play time! :)</i></p><br>
+            <div class="w3-row-padding w3-padding-32" style="margin:0 -16px">
+                <div class="w3-col-padding">
+                    <h3 class="w3-wide w3-center">Motions in list</h3>
+                    <div id="ul_list" class="w3-row-padding-32">
+                    {% if mo %}
+                        <ul class="motion w3-ul w3-white w3-hoverable w3-card-4 w3-text-black w3-border">
+                        {% for motion in mo %}
+                            <li class="w3-padding" id="{{ motion.id }}" value="{{ motion.id }}">
+                                <span class="w3-center">{{ motion.motion_type }}   id={{ motion.id }}</span>
+                                <span class="w3-badge w3-left">{{ motion.order }}</span>
+                                <span class="deleteButton w3-btn w3-red w3-small w3-padding-small w3-right">Delete</span>
+                            </li>
+                        {% endfor %}
+                        </ul>
+                    {% else %}
+                        <p>No lists are available.</p>
+                    {% endif %}
+                    </div>
+                    <div class="w-padding-32 w3-section">
+                        <button class="w3-button w3-white w3-block w3-margin-bottom" onclick="document.getElementById('motionModal').style.display='block'">Add New Motion</button>
+                        <form method="post" action="#motion_list">{% csrf_token %}
+                            <input type="hidden" value="{{ cur }}" name="cur" id="cur">
+                            <input type="submit" value="RUN" name="runSubmit" id="runSubmit" class="w3-button w3-block w3-teal w3-padding-16 w3-section">
+                            <input type="submit" value="DELETE LIST" name="deleteList" id="delete_list" class="w3-button w3-block w3-red w3-section">
+                        </form>
 
-							</article>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-					</div>
+    <!-- New Motion Modal -->
+    <div id="motionModal" class="w3-modal">
+        <div class="w3-modal-content w3-animate-top w3-card-4">
+            <header class="w3-container w3-teal w3-center w3-padding-32">
+                <span onclick="document.getElementById('motionModal').style.display='none'"
+                    class="w3-button w3-teal w3-xlarge w3-display-topright">×</span>
+                <h2 class="w3-wide"><i class="fa fa-suitcase w3-margin-right"></i>New Motion</h2>
+            </header>
+            <div class="w3-container">
+                <form method="post" class="w3-container" action="#editMotionList"> {% csrf_token %}
+                    <input type="hidden" value="{{ cur }}" name="cur" id="cur">
+                    <select class="w3-select" id="motionOptions" name="motionOptions" onchange="myEditMotionFunction()">
+                        <option value="walk">Walk</option>
+                        <option value="rest">Rest</option>
+                        <option value="customize">Customize</option>
+                        <option value="speak">Speak</option>
+                        <option value="stand">Stand Up</option>
+                        <option value="lay">Lay Down</option>
+                    </select>
+                    <div id="walk_div" class="w3-row-padding w3-section">
+                        <input class="w3-input" type="text" name="vertical" placeholder="Move forward or back by y in range(-5, 5) meters">
+                        <input class="w3-input" type="text" name="horizontal" placeholder="Move left or right by x in range(-5, 5) meters">
+                        <input class="w3-input" type="text" name="angle" placeholder="Turn angle by angle in range(-180, 180) degrees">
+                    </div>
+                    <div id="customize_div" class="w3-row-padding w3-section">
+                        <h3>Recording Mode</h3>
+                        <p>In Torque and Free Mode, you will have around 10 seconds to record the motions.</p>
+                        <p>In Button Mode, the recording will not stop util you press the rear button.</p>
+                        <div class="w3-padding w3-section">
+                        <input class="w3-radio" type="radio" name="record" value="torque" checked>
+                        <label>Torque Mode</label>
+                        <p>
+                        <input class="w3-radio" type="radio" name="record" value="free">
+                        <label>Free Mode</label>
+                        <p>
+                        <input class="w3-radio" type="radio" name="record" value="button">
+                        <label>Button Mode</label>
+                        </div>
+                        <h3>Play Mode</h3>
+                        <div class="w3-padding w3-section">
+                        <input class="w3-check" type="radio" name="music" value="1">
+                        <label>With Music</label>
+                        <p>
+                        <input class="w3-check" type="radio" name="music" value="0">
+                        <label>Without Music</label>
+                        </div>
+                    </div>
+                    <div id="speak_div" class="w3-row-padding w3-section">
+                        <input class="w3-input" type="text" name="text" placeholder="The words to say...">
+                    </div>
 
-			</div>
+                    <input type="submit" value="CREATE" name="motionSubmit" id="motionSubmit" class="w3-button w3-block w3-teal w3-padding-16 w3-section w3-right">
+                </form>
+            </div>
+        </div>
+    </div>
 
-		<!-- BG -->
-			<div id="bg"></div>
 
-		<!-- Scripts -->
-			<script src="{% static 'assets/js/jquery.min.js' %}"></script>
-			<script src="{% static 'assets/js/skel.min.js' %}"></script>
-			<script src="{% static 'assets/js/util.js' %}"></script>
-			<script src="{% static 'assets/js/main.js' %}"></script>
+    <!-- The Information Section -->
+    <div class="w3-container w3-content w3-padding-64" style="max-width:800px" id="info">
+        <h2 class="w3-wide w3-center">INFORMATION</h2>
+        <p class="w3-opacity w3-center"><i>Information shows here :)</i></p>
+        <div class="w3-row w3-padding-32">
+            <div class="w3-light-grey w3-round w3-section">
+                <div class="w3-container w3-round-xlarge w3-padding w3-black" style="width:{{ battery }}%">Battery: {{ battery }}%</div>
+            </div>
+            <button class="w3-btn w3-block w3-section"><a style="text-decoration:none" href="http://192.168.1.100"> Nao Setting Page </a></button>
+        </div>
+    </div>
 
-	</body>
+    <!-- End Page Content -->
+</div>
+
+
+<!-- Footer -->
+<footer class="w3-container w3-padding-64 w3-center w3-opacity w3-light-grey w3-xlarge">
+    <i class="fa fa-facebook-official w3-hover-opacity"></i>
+    <i class="fa fa-instagram w3-hover-opacity"></i>
+    <i class="fa fa-snapchat w3-hover-opacity"></i>
+    <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+    <i class="fa fa-twitter w3-hover-opacity"></i>
+    <i class="fa fa-linkedin w3-hover-opacity"></i>
+</footer>
+
+<script src="{% static 'jquery-3.2.1.min.js' %}"></script>
+<script src="{% static 'jquery-sortable.js' %}"></script>
+<script>
+    var CSRFtoken = $('input[name=csrfmiddlewaretoken]').val();
+
+    $(document).ready(function () {
+        $(".deleteButton").click(function () {
+            var pk = $(this).parent().attr("value");
+            $(this).parent().hide();
+
+            $.post("", {
+                cur: "{{ cur }}",
+                deleteId: pk,
+                csrfmiddlewaretoken: CSRFtoken
+            });
+        });
+
+
+        $(function  () {
+            $("ul.motion").sortable({
+                onDrop: function ($item, container, _super, event) {
+                    $item.removeClass(container.group.options.draggedClass).removeAttr("style");
+                    $("body").removeClass(container.group.options.bodyClass);
+                    document.getElementById('test').innerHTML= $item.attr("value");
+
+                    $.post("", {
+                        cur: "{{ cur }}",
+                        index: $item.index(),
+                        moveId: $item.attr("value"),
+                        csrfmiddlewaretoken: CSRFtoken
+                    })
+                }
+            });
+        });
+    });
+
+
+
+    // Automatic Slideshow - change image every 4 seconds
+    var myIndex = 0;
+    carousel();
+
+    function carousel() {
+        var i;
+        var x = document.getElementsByClassName("mySlides");
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
+        }
+        myIndex++;
+        if (myIndex > x.length) {myIndex = 1}
+        x[myIndex-1].style.display = "block";
+        setTimeout(carousel, 4000);
+    }
+
+    //Display for create new motion popup
+    document.getElementById('walk_div').style.display = 'block';
+    document.getElementById('speak_div').style.display = 'none';
+    document.getElementById('customize_div').style.display = 'none';
+    function myEditMotionFunction() {
+        var x = document.getElementById('motionOptions').value;
+        if (x === 'walk'){
+            document.getElementById('walk_div').style.display = 'block';
+            document.getElementById('speak_div').style.display = 'none';
+            document.getElementById('customize_div').style.display = 'none';
+        }
+        else if (x === 'customize'){
+            document.getElementById('customize_div').style.display = 'block';
+            document.getElementById('walk_div').style.display = 'none';
+            document.getElementById('speak_div').style.display = 'none';
+        }
+        else if (x === 'speak'){
+            document.getElementById('speak_div').style.display = 'block';
+            document.getElementById('walk_div').style.display = 'none';
+            document.getElementById('customize_div').style.display = 'none';
+        }
+        else {
+            document.getElementById('walk_div').style.display = 'none';
+            document.getElementById('speak_div').style.display = 'none';
+            document.getElementById('customize_div').style.display = 'none';
+        }
+
+
+    }
+
+
+    // Used to toggle the menu on small screens when clicking on the menu button
+    function myFunction() {
+        var x = document.getElementById("navDemo");
+        if (x.className.indexOf("w3-show") === -1) {
+            x.className += " w3-show";
+        } else {
+            x.className = x.className.replace(" w3-show", "");
+        }
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    var modal = document.getElementById('ticketModal');
+    window.onclick = function(event) {
+        if (event.target === modal) {
+            modal.style.display = "none";
+        }
+    };
+
+    // When the user clicks anywhere outside of the modal, close it
+    var modal1 = document.getElementById('motionListModal');
+    window.onclick = function(event) {
+        if (event.target === modal1) {
+            modal.style.display = "none";
+        }
+    };
+
+    var modal2 = document.getElementById('motionModal');
+    window.onclick = function(event) {
+        if (event.target === modal2) {
+            modal.style.display = "none";
+        }
+    };
+
+
+</script>
+
+</body>
 </html>

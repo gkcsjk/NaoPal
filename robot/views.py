@@ -4,26 +4,8 @@ from __future__ import unicode_literals
 from django.shortcuts import render, HttpResponse
 from .models import *
 import src
-# Create your views here.
 
-
-def show_index(request):
-
-    if request.GET.get('walk_submit'):
-        x = float(request.GET.get('x'))
-        y = float(request.GET.get('y'))
-        angle = float(request.GET.get('angle'))
-        motion = Motion()
-        walk = Walk()
-
-        walk.horizontal = x
-        walk.vertical = y
-        walk.angle = angle
-        walk.save()
-        return render(request, 'index.html', {})
-
-    else:
-        return render(request, 'index.html', {})
+PI = 3.1415926
 
 
 def show_timeline(request):
@@ -79,15 +61,21 @@ def show_timeline(request):
         context['cur'] = cur
 
         if type == "walk":
-            x = request.POST.get('horizontal')
-            y = request.POST.get('vertical')
-            angle = request.POST.get('angle')
-            myWalk = Walk()
-            myWalk.motion = myMotion
-            myWalk.vertical = y
-            myWalk.horizontal = x
-            myWalk.angle = angle
-            myWalk.save()
+            x = float(request.POST.get('horizontal'))
+            y = float(request.POST.get('vertical'))
+            angle = PI*(float(request.POST.get('angle'))/180)
+            try:
+                if -5.0 < x < 5.0 and -5.0 < y < 5.0 and -3.14 < angle < 3.14:
+                    myWalk = Walk()
+                    myWalk.motion = myMotion
+                    myWalk.vertical = y
+                    myWalk.horizontal = x
+                    myWalk.angle = angle
+                    myWalk.save()
+                else:
+                    return HttpResponse("INPUT ERROR!")
+            except Exception:
+                return HttpResponse("INPUT ERROR!")
 
         elif type == "rest":
             myRest = Rest()
@@ -95,9 +83,13 @@ def show_timeline(request):
             myRest.save()
 
         elif type == "customize":
+            HttpResponse("Running...")
+            ratio_checked = request.POST.get('record')
+            checkbox = int(request.POST.get('music'))
             myCustomize = Customize()
             myCustomize.motion = myMotion
-            myCustomize.file_path = src.record(str(myMotion.id)+'.csv')
+            myCustomize.music = checkbox
+            myCustomize.file_path = src.record(str(myMotion.id)+'.csv', ratio_checked)
             myCustomize.save()
 
         elif type == "speak":
@@ -118,6 +110,7 @@ def show_timeline(request):
             myLay.save()
 
     if request.POST.get('runSubmit'):
+        HttpResponse("Running...")
         cur = request.POST.get('cur')
         myMotionList = MotionList.objects.get(list_name=cur)
         q1 = Motion.objects.filter(list_id=myMotionList)
@@ -136,7 +129,11 @@ def show_timeline(request):
                 src.lay()
             elif obj.motion_type == 'customize':
                 csv_path = obj.customize.file_path
-                src.replay(csv_path)
+                music = obj.customize.music
+                if music == 0:
+                    src.replay(csv_path)
+                elif music == 1:
+                    src.replay_music(csv_path, beats="sugar")
             elif obj.motion_type == 'speak':
                 text = str(obj.speak.text)
                 src.speak(text)
@@ -157,6 +154,7 @@ def show_timeline(request):
             eMotion.order -= 1
             eMotion.save()
         myMotion.delete()
+        myMotionList.len -= 1
 
     if request.POST.get('index'):
         index = int(request.POST.get('index'))
@@ -181,16 +179,14 @@ def show_timeline(request):
             print "move up"
             q2 = Motion.objects.filter(list_id=myMotionList, order__gte=index, order__lt=old_index)
             for e in q2:
-                print e.order
                 myMotion = Motion.objects.get(pk=e.pk)
                 myMotion.order += 1
                 myMotion.save()
 
         moveItem.order = index
         moveItem.save()
-        print moveItem.order
 
-    return render(request, 'timeline.html', context)
+    return render(request, 'index.html', context)
 
 
 

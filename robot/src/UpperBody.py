@@ -127,6 +127,44 @@ def load_animation(motion, path):
         return True
 
 
+def load_animation_with_beats(motion, beats, path):
+    print "Start loading animation records and music beats"
+    try:
+        animation_lists, length = Frw.load_result(path)
+    except Exception:
+        motion.rest()
+        return False
+    else:
+        names = Frw.fieldnames
+        angles = []
+        times = []
+        single_time = beats
+        single_time_len = len(single_time)
+        isAbsolute = True
+        for name in names:
+            animation_lenth = len(animation_lists[name])
+            if animation_lenth<single_time_len:
+                r = single_time_len%animation_lenth
+                n = single_time_len/animation_lenth
+                animation_lists[name] = n*animation_lists[name] + animation_lists[name][0:r]
+            angles.append(animation_lists[name])
+            times.append(single_time)
+        try:
+            start = time.time()
+            print angles
+            print times
+
+            motion.angleInterpolation(names, angles, times, isAbsolute)
+            end = time.time()
+            print "playing time: {} seconds.".format(end - start)
+        except Exception:
+            print "Nothing recorded!"
+        print "finished"
+        return True
+
+
+
+
 def save_data(memory, data_list):
     """
     Save data from ALMemory as a dictionary to list
