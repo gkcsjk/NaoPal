@@ -43,8 +43,8 @@
       <file leaf-file-name="Util.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/robot/src/Util.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="540">
-              <caret line="18" column="9" lean-forward="true" selection-start-line="18" selection-start-column="9" selection-end-line="18" selection-end-column="9" />
+            <state relative-caret-position="210">
+              <caret line="7" column="28" lean-forward="true" selection-start-line="7" selection-start-column="28" selection-end-line="7" selection-end-column="28" />
               <folding />
             </state>
           </provider>
@@ -53,8 +53,8 @@
       <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/robot/src/__init__.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1980">
-              <caret line="68" column="44" lean-forward="false" selection-start-line="68" selection-start-column="44" selection-end-line="68" selection-end-column="44" />
+            <state relative-caret-position="150">
+              <caret line="5" column="16" lean-forward="false" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="16" />
               <folding>
                 <element signature="e#0#25#0" expanded="true" />
               </folding>
@@ -65,8 +65,8 @@
       <file leaf-file-name="UpperBody.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/robot/src/UpperBody.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-869">
-              <caret line="76" column="27" lean-forward="false" selection-start-line="76" selection-start-column="27" selection-end-line="76" selection-end-column="27" />
+            <state relative-caret-position="541">
+              <caret line="149" column="12" lean-forward="true" selection-start-line="149" selection-start-column="12" selection-end-line="149" selection-end-column="12" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
               </folding>
@@ -77,7 +77,7 @@
       <file leaf-file-name="ALMemoryKey.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/robot/src/ALMemoryKey.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1231">
+            <state relative-caret-position="4051">
               <caret line="145" column="15" lean-forward="false" selection-start-line="145" selection-start-column="5" selection-end-line="145" selection-end-column="15" />
               <folding />
             </state>
@@ -160,12 +160,12 @@
         <option value="$PROJECT_DIR$/robot/static/forms.py" />
         <option value="$PROJECT_DIR$/robot/models.py" />
         <option value="$PROJECT_DIR$/templates/timeline.html" />
-        <option value="$PROJECT_DIR$/robot/src/__init__.py" />
         <option value="$PROJECT_DIR$/templates/busy.html" />
-        <option value="$PROJECT_DIR$/robot/src/Util.py" />
         <option value="$PROJECT_DIR$/robot/urls.py" />
         <option value="$PROJECT_DIR$/templates/index.html" />
         <option value="$PROJECT_DIR$/robot/views.py" />
+        <option value="$PROJECT_DIR$/robot/src/__init__.py" />
+        <option value="$PROJECT_DIR$/robot/src/Util.py" />
         <option value="$PROJECT_DIR$/robot/src/UpperBody.py" />
       </list>
     </option>
@@ -516,7 +516,21 @@
       <option name="project" value="LOCAL" />
       <updated>1495026988871</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Update upper body recording">
+      <created>1495244468265</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1495244468265</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Update upper body recording (2)">
+      <created>1495244761555</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1495244761555</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -584,7 +598,9 @@
     <MESSAGE value="sortable list;&#10;robot python src;" />
     <MESSAGE value="recording motions update: UpperBody.py" />
     <MESSAGE value="Music dancing function" />
-    <option name="LAST_COMMIT_MESSAGE" value="Music dancing function" />
+    <MESSAGE value="Update upper body recording" />
+    <MESSAGE value="Update upper body recording (2)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update upper body recording (2)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -914,24 +930,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/robot/src/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1980">
-          <caret line="68" column="44" lean-forward="false" selection-start-line="68" selection-start-column="44" selection-end-line="68" selection-end-column="44" />
-          <folding>
-            <element signature="e#0#25#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/robot/src/Util.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="18" column="9" lean-forward="true" selection-start-line="18" selection-start-column="9" selection-end-line="18" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/robot/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -952,16 +950,34 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/robot/src/ALMemoryKey.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1231">
+        <state relative-caret-position="4051">
           <caret line="145" column="15" lean-forward="false" selection-start-line="145" selection-start-column="5" selection-end-line="145" selection-end-column="15" />
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/robot/src/Util.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="7" column="28" lean-forward="true" selection-start-line="7" selection-start-column="28" selection-end-line="7" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/robot/src/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="5" column="16" lean-forward="false" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="16" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/robot/src/UpperBody.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-869">
-          <caret line="76" column="27" lean-forward="false" selection-start-line="76" selection-start-column="27" selection-end-line="76" selection-end-column="27" />
+        <state relative-caret-position="541">
+          <caret line="149" column="12" lean-forward="true" selection-start-line="149" selection-start-column="12" selection-end-line="149" selection-end-column="12" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
           </folding>

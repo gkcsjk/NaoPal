@@ -37,17 +37,16 @@ def record_animation_buttons(motion, memory, path, filename):
 
 def record_animation1(motion, memory, path, filename):
     print "operate the robot..."
-    finished = False
     csv_path = Frw.create_csv(path, filename)
     animation_list = []
     start = time.time()
     motion.setStiffnesses('Head', 0)
     motion.setStiffnesses('LArm', 0)
     motion.setStiffnesses('RArm', 0)
-    while not finished:
+    while 1:
         value = memory.getData(ALMemoryKey.HEAD_TACTIL_TOUCHED['RearTactil'])
         if value == 1.0:
-            finished = True
+            break
         save_data(memory, animation_list)
         time.sleep(0.25)
     end = time.time()
@@ -66,15 +65,13 @@ def record_animation(motion, memory, path, filename):
     :return: Path of csv file
     """
     print "operate the robot..."
-    l = 0
     csv_path = Frw.create_csv(path, filename)
     animation_list = []
     start = time.time()
-    finished = False
-    while not finished:
+    while 1:
         value = memory.getData(ALMemoryKey.HEAD_TACTIL_TOUCHED['RearTactil'])
         if value == 1.0:
-            finished = True
+            break
         record = 0
         for joint in ALMemoryKey.UPPERBODY_TORQUE_KEY.keys():
             value = memory.getData(ALMemoryKey.UPPERBODY_TORQUE_KEY[joint])
@@ -162,8 +159,6 @@ def load_animation_with_beats(motion, beats, path):
             print "Nothing recorded!"
         print "finished"
         return True
-
-
 
 
 def save_data(memory, data_list):
