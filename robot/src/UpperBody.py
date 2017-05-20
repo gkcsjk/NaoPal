@@ -35,7 +35,7 @@ def record_animation_buttons(motion, memory, path, filename):
     return csv_path
 
 
-def record_animation1(motion, memory, path, loop, filename):
+def record_animation1(motion, memory, path, filename):
     print "operate the robot..."
     finished = False
     csv_path = Frw.create_csv(path, filename)
@@ -56,7 +56,7 @@ def record_animation1(motion, memory, path, loop, filename):
     return csv_path
 
 
-def record_animation(motion, memory, path, loop, filename):
+def record_animation(motion, memory, path, filename):
     """
     Record the motions of upper body for LOOP times
     :param loop: Recording times 

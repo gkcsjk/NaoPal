@@ -1,7 +1,7 @@
 IP = "192.168.1.100"
 PORT = 9559
-LOOP = 50
 PI = 3.1415926
+
 
 # From CSV file to list
 def get_music(filepath):

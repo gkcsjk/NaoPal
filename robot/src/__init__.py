@@ -4,7 +4,6 @@ import UpperBody
 
 IP = Util.IP
 PORT = Util.PORT
-LOOP = Util.LOOP
 PATH = Util.PATH
 
 motion = ALProxy("ALMotion", IP, PORT)
@@ -45,9 +44,9 @@ def record(filename, type):
     motion.setStiffnesses("Body", 1)
     posture.goToPosture("StandInit", 0.5)
     if type == 'torque':
-        csv_path = UpperBody.record_animation(motion, memory, PATH, LOOP, filename)
+        csv_path = UpperBody.record_animation(motion, memory, PATH, filename)
     elif type == 'free':
-        csv_path = UpperBody.record_animation1(motion, memory, PATH, LOOP, filename)
+        csv_path = UpperBody.record_animation1(motion, memory, PATH, filename)
     else:
         csv_path = UpperBody.record_animation_buttons(motion, memory, PATH, filename)
     motion.rest()
