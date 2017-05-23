@@ -1,6 +1,7 @@
 from naoqi import ALProxy
 import Util
 import UpperBody
+import Steps
 
 IP = Util.IP
 PORT = Util.PORT
@@ -74,9 +75,10 @@ def get_battery():
     return value
 
 
-def get_volume():
-    return tts.getVolume()
+def chachastep():
+    Steps.chachastep(motion, posture)
 
 
-def set_Volume(v):
-    tts.setVolume(float(v)/100)
+def stopall():
+    aup.stopAll()
+    motion.rest()

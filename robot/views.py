@@ -12,13 +12,11 @@ def show_timeline(request):
     ml = MotionList.objects.order_by('list_name')
     allmo = Motion.objects.order_by('order')
     battery = src.get_battery()
-    volume = 100*src.get_volume()
     cur=""
 
     context = {
         'ml': ml,
         'battery': battery,
-        'volume': volume,
     }
 
     if request.POST.get('motionList'):
@@ -109,6 +107,11 @@ def show_timeline(request):
             myLay.motion = myMotion
             myLay.save()
 
+        elif type == "steps":
+            mySteps = Steps()
+            mySteps.motion = myMotion
+            mySteps.save()
+
     if request.POST.get('runSubmit'):
         HttpResponse("Running...")
         cur = request.POST.get('cur')
@@ -137,6 +140,11 @@ def show_timeline(request):
             elif obj.motion_type == 'speak':
                 text = str(obj.speak.text)
                 src.speak(text)
+            elif obj.motion_type == "steps":
+                src.chachastep()
+
+    if request.POST.get('stopMotions'):
+        src.stopall()
 
     if request.POST.get('deleteList'):
         cur = request.POST.get('cur')

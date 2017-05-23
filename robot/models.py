@@ -43,6 +43,10 @@ class Rest(models.Model):
     motion = models.OneToOneField(Motion, on_delete=models.CASCADE, primary_key=True)
 
 
+class Steps(models.Model):
+    motion = models.OneToOneField(Motion, on_delete=models.CASCADE, primary_key=True)
+
+
 class Lay(models.Model):
     motion = models.OneToOneField(Motion, on_delete=models.CASCADE, primary_key=True)
 

@@ -14,10 +14,16 @@ def get_music(filepath):
 # File path of the beats
 beats = {
     "sugar": get_music("robot/src/beats/sugar.csv"),
+    "free": get_music("robot/src/beats/sugar.csv"),
+    "sky": get_music("robot/src/beats/sky.csv"),
+    "moon": get_music("robot/src/beats/moon.csv"),
 }
 # File path of the music
 music = {
     "sugar": "/home/nao/naoGUI/sugar.wav",
+    "free": "/home/nao/naoGUI/free.wav",
+    "sky": "/home/nao/naoGUI/sky.wav",
+    "moon": "/home/nao/naoGUI/moon.wav",
 }
 
 # File path to store the motion records

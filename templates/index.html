@@ -49,24 +49,15 @@
         <a href="#motion_list" class="w3-bar-item w3-button w3-padding-large w3-hide-small">MOTION LISTS</a>
         <a href="#editMotionList" class="w3-bar-item w3-button w3-padding-large w3-hide-small">RUN</a>
         <a href="#info" class="w3-bar-item w3-button w3-padding-large w3-hide-small">INFORMATION</a>
-        <div class="w3-dropdown-hover w3-hide-small">
-            <button class="w3-padding-large w3-button" title="More">MORE <i class="fa fa-caret-down"></i></button>
-            <div class="w3-dropdown-content w3-bar-block w3-card-4">
-                <a href="#" class="w3-bar-item w3-button">Merchandise</a>
-                <a href="#" class="w3-bar-item w3-button">Extras</a>
-                <a href="#" class="w3-bar-item w3-button">Media</a>
-            </div>
-        </div>
         <a href="javascript:void(0)" class="w3-padding-large w3-hover-red w3-hide-small w3-right"><i class="fa fa-search"></i></a>
     </div>
 </div>
 
 <!-- Navbar on small screens -->
 <div id="navDemo" class="w3-bar-block w3-black w3-hide w3-hide-large w3-hide-medium w3-top" style="margin-top:46px">
-    <a href="#motion_list" class="w3-bar-item w3-button w3-padding-large">BAND</a>
-    <a href="#editMotionList" class="w3-bar-item w3-button w3-padding-large">TOUR</a>
-    <a href="#info" class="w3-bar-item w3-button w3-padding-large">CONTACT</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding-large">MERCH</a>
+    <a href="#motion_list" class="w3-bar-item w3-button w3-padding-large">MOTION LISTS</a>
+    <a href="#editMotionList" class="w3-bar-item w3-button w3-padding-large">RUN</a>
+    <a href="#info" class="w3-bar-item w3-button w3-padding-large">INFO</a>
 </div>
 
 <!-- Page content -->
@@ -107,7 +98,7 @@
                     <form class="w3-container" method="post" action="#editMotionList">{% csrf_token %}
                     <h3>OR</h3>
                     <label for="options">Select from existing lists:</label>
-                        <select class="w3-select" id="options" name="options">
+                        <select class="w3-select w3-padding-16" id="options" name="options">
                             {% for list in ml %}
                             <option value="{{ list.list_name }}"> {{ list.list_name }}</option>
                             {% endfor %}
@@ -149,7 +140,7 @@
     <!-- The Editing Motion List Section -->
     <div class="w3-black" id="editMotionList">
         <div class="w3-container w3-content w3-padding-64" style="max-width:800px">
-            <h2 class="w3-wide w3-center" id="editMotionList_h2">CURRENT MOTION LIST: {{ cur }}</h2>
+            <h2 class="w3-wide w3-center w3-xxlarge" id="editMotionList_h2">-----{{ cur }}-----</h2>
             <p id="test" class="w3-opacity w3-center"><i>It's play time! :)</i></p><br>
             <div class="w3-row-padding w3-padding-32" style="margin:0 -16px">
                 <div class="w3-col-padding">
@@ -159,22 +150,23 @@
                         <ul class="motion w3-ul w3-white w3-hoverable w3-card-4 w3-text-black w3-border">
                         {% for motion in mo %}
                             <li class="w3-padding" id="{{ motion.id }}" value="{{ motion.id }}">
-                                <span class="w3-center">{{ motion.motion_type }}   id={{ motion.id }}</span>
-                                <span class="w3-badge w3-left">{{ motion.order }}</span>
+                                <span class="w3-center w3-padding w3-large">{{ motion.motion_type }}</span>
+                                <span class="w3-badge w3-left">M</span>
                                 <span class="deleteButton w3-btn w3-red w3-small w3-padding-small w3-right">Delete</span>
                             </li>
                         {% endfor %}
                         </ul>
                     {% else %}
-                        <p>No lists are available.</p>
+                        <p>No motions in this list.</p>
                     {% endif %}
                     </div>
                     <div class="w-padding-32 w3-section">
-                        <button class="w3-button w3-white w3-block w3-margin-bottom" onclick="document.getElementById('motionModal').style.display='block'">Add New Motion</button>
+                        <button class="w3-button w3-white w3-block w3-padding-16 w3-margin-bottom" onclick="document.getElementById('motionModal').style.display='block'">New Motion</button>
                         <form method="post" action="#motion_list">{% csrf_token %}
                             <input type="hidden" value="{{ cur }}" name="cur" id="cur">
                             <input type="submit" value="RUN" name="runSubmit" id="runSubmit" class="w3-button w3-block w3-teal w3-padding-16 w3-section">
-                            <input type="submit" value="DELETE LIST" name="deleteList" id="delete_list" class="w3-button w3-block w3-red w3-section">
+                            <input type="submit" value="STOP" name="stopMotions" id="stopMotions" class="w3-button w3-block w3-padding-16 w3-teal w3-section">
+                            <input type="submit" value="DELETE LIST" name="deleteList" id="delete_list" class="w3-button w3-block w3-padding-16 w3-red w3-section">
                         </form>
 
                     </div>
@@ -201,6 +193,7 @@
                         <option value="speak">Speak</option>
                         <option value="stand">Stand Up</option>
                         <option value="lay">Lay Down</option>
+                        <option value="steps">Steps</option>
                     </select>
                     <div id="walk_div" class="w3-row-padding w3-section">
                         <input class="w3-input" type="text" name="vertical" placeholder="Move forward or back by y in range(-5, 5) meters">
@@ -226,7 +219,7 @@
                         <input class="w3-check" type="radio" name="music" value="1">
                         <label>With Music</label>
                         <p>
-                        <input class="w3-check" type="radio" name="music" value="0">
+                        <input class="w3-check" type="radio" name="music" value="0" checked>
                         <label>Without Music</label>
                         </div>
                     </div>
@@ -259,12 +252,8 @@
 
 <!-- Footer -->
 <footer class="w3-container w3-padding-64 w3-center w3-opacity w3-light-grey w3-xlarge">
-    <i class="fa fa-facebook-official w3-hover-opacity"></i>
-    <i class="fa fa-instagram w3-hover-opacity"></i>
-    <i class="fa fa-snapchat w3-hover-opacity"></i>
-    <i class="fa fa-pinterest-p w3-hover-opacity"></i>
-    <i class="fa fa-twitter w3-hover-opacity"></i>
-    <i class="fa fa-linkedin w3-hover-opacity"></i>
+    <p>Nao Robot Project</p>
+    <p>Semester 2017-1</p>
 </footer>
 
 <script src="{% static 'jquery-3.2.1.min.js' %}"></script>
