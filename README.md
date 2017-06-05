@@ -1,4 +1,4 @@
-# Web Application User Guide
+# Nao Pal User Guide
 
 ## 1 Installation
 
